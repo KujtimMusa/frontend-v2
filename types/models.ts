@@ -52,6 +52,7 @@ export interface Recommendation {
   created_at: string;
   updated_at: string;
   feature_confidence?: Record<string, number>;
+  strategy_details?: any[] | any;
 }
 
 export interface CompetitorPrice {
