@@ -46,7 +46,7 @@ export function PriceRecommendationCard({
   };
 
   const handleApplyPrice = async () => {
-    const recommendedPrice = recommendation.recommended_price ?? recommendation.recommendation;
+    const recommendedPrice = recommendation.recommended_price ?? recommendation.current_price ?? 0;
     if (!productId || !recommendedPrice) return;
     
     setApplying(true);
