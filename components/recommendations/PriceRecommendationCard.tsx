@@ -73,7 +73,7 @@ export function PriceRecommendationCard({
   };
 
   // Safe access to recommendation values with fallbacks
-  const recommendedPrice = recommendation.recommended_price ?? recommendation.recommendation ?? 0;
+  const recommendedPrice = recommendation.recommended_price ?? 0;
   const currentPrice = recommendation.current_price ?? 0;
   const confidence = recommendation.confidence ?? 0;
   const status = recommendation.status || 'pending';
