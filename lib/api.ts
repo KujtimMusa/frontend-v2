@@ -26,15 +26,25 @@ function getOrCreateSessionId(): string {
 
 // Helper: Füge Session-ID zu Headers hinzu
 export function getHeaders(): HeadersInit {
-  const headers: HeadersInit = {
-    'Content-Type': 'application/json',
-  };
-  
-  const sessionId = getOrCreateSessionId();
-  if (sessionId) {
-    headers['X-Session-ID'] = sessionId;
+  return getApiHeaders();
+}
+
+/** Session-Token für embedded App ODER X-Session-ID für Standalone */
+export function getApiHeaders(sessionToken?: string | null): HeadersInit {
+  const headers: HeadersInit = { 'Content-Type': 'application/json' };
+  if (sessionToken) {
+    (headers as Record<string, string>)['Authorization'] =
+      `Bearer ${sessionToken}`;
+  } else {
+    const sessionId =
+      typeof window !== 'undefined' ? localStorage.getItem('session_id') : null;
+    if (sessionId)
+      (headers as Record<string, string>)['X-Session-ID'] = sessionId;
+    else {
+      const sid = getOrCreateSessionId();
+      if (sid) (headers as Record<string, string>)['X-Session-ID'] = sid;
+    }
   }
-  
   return headers;
 }
 

@@ -274,7 +274,7 @@ export default function DemoProductsPage() {
               trend: 'up' as const, // Placeholder - sollte aus API kommen
               sales30d: 145, // Placeholder - sollte aus API kommen
               selected: selectedProducts.has(p.id),
-              onSelect: (id) => {
+              onSelect: (id: number) => {
                 const newSelected = new Set(selectedProducts);
                 if (newSelected.has(id as number)) {
                   newSelected.delete(id as number);

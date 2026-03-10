@@ -28,8 +28,7 @@ export function ProductGrid({ products, marginMap }: ProductGridProps) {
       {products.map((product) => (
         <ProductCard 
           key={product.id} 
-          product={product}
-          margin={marginMap?.[product.id]}
+          product={{ ...product, margin: marginMap?.[product.id] }}
         />
       ))}
     </div>

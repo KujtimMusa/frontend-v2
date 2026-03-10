@@ -196,7 +196,7 @@ export default function DemoRecommendationPage() {
           currentPrice={product.price}
           productImage={product.image}
           productSku={product.sku}
-          productCost={costs?.purchase || product.cost}
+          productCost={costs?.purchase_cost ?? product.cost}
           productMargin={margin}
           productPotential={potential}
           onBack={() => router.back()}

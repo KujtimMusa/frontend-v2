@@ -22,23 +22,24 @@ export function Sidebar() {
   const { logout } = useAuthStore();
   const [shopDropdownOpen, setShopDropdownOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
-  
+
   const isDemo = pathname.startsWith('/demo');
-  
+  const isEmbedded = pathname.startsWith('/app');
+
   const navItems = [
     {
       label: 'Dashboard',
-      href: isDemo ? '/demo' : '/dashboard',
+      href: isEmbedded ? '/app/dashboard' : isDemo ? '/demo' : '/dashboard',
       icon: LayoutDashboard,
     },
     {
       label: 'Produkte',
-      href: isDemo ? '/demo/products' : '/dashboard/products',
+      href: isEmbedded ? '/app/dashboard/products' : isDemo ? '/demo/products' : '/dashboard/products',
       icon: Package,
     },
     {
       label: 'Empfehlungen',
-      href: isDemo ? '/demo/recommendations' : '/dashboard/recommendations',
+      href: isEmbedded ? '/app/dashboard/recommendations' : isDemo ? '/demo/recommendations' : '/dashboard/recommendations',
       icon: Lightbulb,
     },
   ];
